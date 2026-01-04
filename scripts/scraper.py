@@ -157,6 +157,7 @@ class BookScraper():
             rating = self._find_book_rating(soup)
             category = self._find_book_category(soup)
             img_url = self._find_book_image(soup)
+            full_url = urljoin(self.base_url, book_url)
             
             data = {
                 "title": title,
@@ -164,7 +165,8 @@ class BookScraper():
                 "currency": currency,
                 "rating": rating,
                 "category": category,
-                "img_url": img_url
+                "img_url": img_url,
+                "url": full_url
             }
             
             print(f"[{i}/{total}] Processando: {title}")
@@ -180,7 +182,7 @@ class BookScraper():
         
 if __name__ == "__main__":
     filename = "./data/book_data"
-    fieldnames = ["title", "price", "currency", "rating", "category", "img_url"]
+    fieldnames = ["title", "price", "currency", "rating", "category", "img_url", "url"]
         
     with CSVWriter("./data/book_data", fieldnames) as writer:
         scraper = BookScraper(storage=writer)
