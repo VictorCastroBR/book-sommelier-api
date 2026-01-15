@@ -29,22 +29,22 @@ flowchart LR
 
 ---
 
-## 📂 Project Structure
+## 📂 Basic Project Structure
 
 ```text
 .
 ├── api/
 │   ├── routes.py        # API endpoints
-│   └── app.py           # Flask app factory
+│   └── main.py          # Flask app factory
 │
 ├── scripts/
 │   └── scraper.py       # Web scraping logic
+│   └── insert_books.py  # Insert books on database logic
 │
 ├── data/
 │   └── books.csv        # Scraped dataset
 │
 ├── requirements.txt
-├── run.py               # App entrypoint
 └── README.md
 ```
 
@@ -84,13 +84,13 @@ data/books.csv
 ## Run the API
 
 ```bash
-python3 app.py
+docker-compose up -d
 ```
 
 API will be available at:
 
 ```
-http://localhost:5000
+http://localhost:8000
 ```
 
 ---

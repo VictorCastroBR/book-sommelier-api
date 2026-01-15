@@ -1,13 +1,11 @@
+from storageInterface import DataStorage
 import csv
 import os
 
-from storageInterface import DataStorage
-
-
 class CSVWriter(DataStorage):
     def __init__(self, filename: str, fieldnames: list):
-        if not filename.endswith(".csv"):
-            filename += ".csv"
+        if not filename.endswith('.csv'):
+            filename += '.csv'
         self.filename = filename
         self.fieldnames = fieldnames
         self._file = None
@@ -20,7 +18,7 @@ class CSVWriter(DataStorage):
             os.makedirs(directory, exist_ok=True)
 
     def __enter__(self):
-        self._file = open(self.filename, "w", newline="", encoding="utf-8")
+        self._file = open(self.filename, 'w', newline='', encoding='utf-8')
         self._writer = csv.DictWriter(self._file, fieldnames=self.fieldnames)
         return self
 
