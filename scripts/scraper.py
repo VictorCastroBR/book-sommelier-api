@@ -166,10 +166,10 @@ class BookScraper:
 
 
 if __name__ == "__main__":
-    filename = "./data/book_data"
+    filename = "./data/books"
     fieldnames = ["title", "price", "currency", "rating", "category", "img_url", "url"]
 
-    with CSVWriter("./data/book_data", fieldnames) as writer:
+    with CSVWriter(filename, fieldnames) as writer:
         scraper = BookScraper(storage=writer)
         writer.save_header()
         scraper.run()

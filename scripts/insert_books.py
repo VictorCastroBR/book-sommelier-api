@@ -4,8 +4,7 @@ from api.main import create_app
 from api.repositories.book_repository import BookRepository
 from api.services.book_import_service import BookImportService
 
-
-CSV_PATH = Path("data/book_data.csv")
+CSV_PATH = Path("data/books.csv")
 
 
 def main() -> None:

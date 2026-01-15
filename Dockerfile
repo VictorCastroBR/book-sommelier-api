@@ -4,6 +4,7 @@ FROM python:3.12-slim
 # Define environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
 WORKDIR /app
 
@@ -33,5 +34,5 @@ EXPOSE 8000
 
 ENV FLASK_APP=api/main.py
 
-# Command to run -> API
-CMD ["sh", "-c", "alembic upgrade head && gunicorn --bind 0.0.0.0:8000 api.main:app"]
+# Command to run: Migrations -> Insert Books -> API
+CMD ["sh", "-c", "alembic upgrade head && python scripts/insert_books.py && gunicorn --bind 0.0.0.0:8000 api.main:app"]
